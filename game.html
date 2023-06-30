@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinosaur Game</title>
+</head>
+<body id="body" style="background: white;">
+	<style>
+.Dinosaur{
+  position: absolute;
+  left: 545px;
+  margin: 50px;
+  top: 80px;
+}	
+.header{
+	display: none;
+}
+.play{
+	position: relative;
+	left: 585px;
+	top: 120px;
+	background-color: black;
+  	border: solid 2px white;
+  	color: white;
+  	padding: 15px 50px;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 16px;
+  	display: inline-block;
+  	cursor: pointer;
+}
+
+	</style>
+	<div class="gif">
+		<img id="gif" style="display: none;" width="1300" height="609px" src="https://i.gifer.com/origin/56/56307a840f4988bdd80e074b8fdee5cd_w200.gif">
+	</div>
+	<div class="div">
+	<img id="Dinosaur" class="Dinosaur" width="160" height="160" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/2048px-Chromium_T-Rex-error-offline.svg.png">
+	</div>
+<button id="butt" onclick="screamer()" class="play">Play</button>
+<script>
+	function screamer() {
+		document.getElementById('Dinosaur').style.display = "none";
+		document.getElementById('butt').style.display = "none";
+		document.getElementById('body').style.background = "black";
+		document.getElementById('gif').style.display = "block";
+	}
+</script>
+</body>
+</html>
