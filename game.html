@@ -7,44 +7,60 @@
 </head>
 <body id="body" style="background: white;">
 	<style>
-.Dinosaur{
-  position: absolute;
-  left: 545px;
-  margin: 50px;
-  top: 80px;
-}	
-.header{
-	display: none;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.play{
-	position: relative;
-	left: 585px;
-	top: 120px;
-	background-color: black;
-  	border: solid 2px white;
-  	color: white;
-  	padding: 15px 50px;
-  	text-align: center;
-  	text-decoration: none;
-  	font-size: 16px;
-  	display: inline-block;
-  	cursor: pointer;
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+.gif{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+.button {
+  margin-top: 20px; 
+  background-color: black;
+  border: solid 2px white;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    height: auto;
+  }
 }
 
 	</style>
 	<div class="gif">
-		<img id="gif" style="display: none;" width="1300" height="609px" src="https://i.gifer.com/origin/56/56307a840f4988bdd80e074b8fdee5cd_w200.gif">
+		<img id="gif" style="display: none;" class="gif" src="https://i.gifer.com/origin/56/56307a840f4988bdd80e074b8fdee5cd_w200.gif">
 	</div>
-	<div class="div">
-	<img id="Dinosaur" class="Dinosaur" width="160" height="160" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/2048px-Chromium_T-Rex-error-offline.svg.png">
-	</div>
-<button id="butt" onclick="screamer()" class="play">Play</button>
+	<div class="container">
+	<img id="Dinosaur" class="image" width="160" height="160" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/2048px-Chromium_T-Rex-error-offline.svg.png">
+<button id="butt" onclick="screamer()" class="button">Play</button>
+</div>
+<audio id="audioPlayer" src="scp.mp3"></audio>
 <script>
+	let playButton = document.getElementById('playButton');
+  	let audioPlayer = document.getElementById('audioPlayer');
 	function screamer() {
 		document.getElementById('Dinosaur').style.display = "none";
 		document.getElementById('butt').style.display = "none";
 		document.getElementById('body').style.background = "black";
 		document.getElementById('gif').style.display = "block";
+		audioPlayer.play();
 	}
 </script>
 </body>
