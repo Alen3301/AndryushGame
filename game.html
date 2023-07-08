@@ -1,67 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dinosaur Game</title>
-</head>
-<body id="body" style="background: white;">
-	<style>
+  <title>Игра: Поймай текст</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+    #container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
 
-.image {
-  max-width: 100%;
-  height: auto;
-}
-.gif{
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
-.button {
-  margin-top: 20px; 
-  background-color: black;
-  border: solid 2px white;
-  color: white;
-  padding: 15px 50px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    height: auto;
-  }
-}
-
-	</style>
-	<div class="gif">
-		<img id="gif" style="display: none;" class="gif" src="https://i.gifer.com/origin/56/56307a840f4988bdd80e074b8fdee5cd_w200.gif">
-	</div>
-	<div class="container">
-	<img id="Dinosaur" class="image" width="160" height="160" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/2048px-Chromium_T-Rex-error-offline.svg.png">
-<button id="butt" onclick="screamer()" class="button">Play</button>
-</div>
-<audio id="audioPlayer" src="scp.mp3"></audio>
-<script>
-	let playButton = document.getElementById('playButton');
-  	let audioPlayer = document.getElementById('audioPlayer');
-	function screamer() {
-		document.getElementById('Dinosaur').style.display = "none";
-		document.getElementById('butt').style.display = "none";
-		document.getElementById('body').style.background = "black";
-		document.getElementById('gif').style.display = "block";
-		audioPlayer.play();
+	.gif { 
+		height: 1000px;
+		width: 1400px;
 	}
-</script>
+    #text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 5vw; 
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <p id="text">Поймай меня!</p>
+  </div>
+  <div class="gif">
+	<img id="gif" style="display: none;" class="gif" src="https://i.gifer.com/origin/56/56307a840f4988bdd80e074b8fdee5cd_w200.gif">
+</div>
+<audio id="audioPlayer" src="llll.mp3"></audio>
+  <script>
+    var container = document.getElementById("container");
+    var text = document.getElementById("text");
+
+    var containerWidth = container.offsetWidth;
+    var containerHeight = container.offsetHeight;
+    var textWidth = text.offsetWidth;
+    var textHeight = text.offsetHeight;
+
+    function getRandomPosition() {
+      var maxX = containerWidth - textWidth;
+      var maxY = containerHeight - textHeight;
+      var randomX = Math.floor(Math.random() * maxX);
+      var randomY = Math.floor(Math.random() * maxY);
+      return { x: randomX, y: randomY };
+    }
+
+    function moveText() {
+      var position = getRandomPosition();
+      text.style.left = position.x + "px";
+      text.style.top = position.y + "px";
+    }
+
+    text.addEventListener("click", function() {
+		document.getElementById("container").style.display = "none";
+		document.getElementById('gif').style.display = "block";
+		let audioPlayer = document.getElementById('audioPlayer');
+		audioPlayer.play();
+    	moveText();
+    });
+
+    setInterval(moveText, 1000);
+  </script>
 </body>
 </html>
+
+
+
+
+
